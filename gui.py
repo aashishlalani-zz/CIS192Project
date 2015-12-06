@@ -2,7 +2,6 @@
 from Tkinter import Tk, BOTH
 from ttk import Frame, Button, Style
 
-
 class Example(Frame):
   
     def __init__(self, parent):
