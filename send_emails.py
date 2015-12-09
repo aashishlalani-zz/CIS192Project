@@ -2,11 +2,10 @@ import smtplib
 
 
 username = "onetimepadcis192@gmail.com"
-toaddrs  = "anvita.achar@gmail.com"
+# toaddrs  = "anvita.achar@gmail.com"
 
 
-def send_email():
-    msg = "dagkadjhkljh"
+def send_email(msg, toaddrs):
     # Credentials (if needed)
     password = "0n3t1m3p4d"
     
@@ -16,5 +15,9 @@ def send_email():
     server.starttls()
     server.ehlo()
     server.login(username, password)
+    print toaddrs+"fhfj"
+    print msg
     server.sendmail(username, toaddrs, msg)
+    print "yeaahh"
     server.quit()
+    
