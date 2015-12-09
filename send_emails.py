@@ -15,9 +15,12 @@ def send_email(msg, toaddrs):
     server.starttls()
     server.ehlo()
     server.login(username, password)
-    print toaddrs+"fhfj"
-    print msg
-    server.sendmail(username, toaddrs, msg)
+    message = """From: From Person <{}> 
+    To: To Person <{}> 
+    Subject: SMTP e-mail test This is a test e-mail message.
+    {}""".format(username, toaddrs, msg)
+    print message
+    server.sendmail(username, toaddrs, message)
     print "yeaahh"
     server.quit()
     

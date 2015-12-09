@@ -1,5 +1,7 @@
 import collections
 import random
+import ast
+import json
 '''
 Created on Dec 8, 2015
 
@@ -7,11 +9,14 @@ Created on Dec 8, 2015
 '''
 
 def Encrypt(string, pad):
+    print string + "CRAZY"
     res = []
-    for i in range (0, len(string)):
+    for i in range (0, len(string)-1):
+        print ord(string[i]) 
         res.append(pad[ord(string[i])])
     
     s = ''.join(res)
+    print s
     return s
 
 def Decrypt(string, pad):
@@ -31,7 +36,7 @@ def GenerateKey():
     keys = list(ascii.keys())
     random.shuffle(keys)
     res = {keys[i]: ascii[i] for i in range(0, 128)}
-    print res
+   
     return res
     pass
 
