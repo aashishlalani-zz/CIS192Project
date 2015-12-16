@@ -24,10 +24,6 @@ class Example(Frame):
         self.style.theme_use("default")
         self.pack(fill=Tkinter.BOTH, expand=1)
         key = Label(self).place(x=0, y=40)
-        encrypt = Label(self).place(x=0, y=150)
-        keyButton = Button(self, text="Generate Key",
-            command=self.createKey)
-        keyButton.place(x=0, y=0)
         e = Entry(self)
         e.pack()
 
@@ -66,16 +62,16 @@ class Example(Frame):
 
        
         
-    def createKey(self):
-        self.key = Cryptography.GenerateKey()
-        print self.key[12]
-        Label(self, text = self.key).place(x=0, y=40)
+
+       
       
     def sendmail(self, to):
         key = "anvita here you go" + self.key.__str__()+ "heres encryption" + self.encrypted.__str__()
         command=send_email(key,to)
         
     def encrypt(self, string):
+        self.key = Cryptography.GenerateKey(string)
+        Label(self, text = self.key).place(x=0, y=40)
         self.encrypted = Cryptography.Encrypt(string, self.key)
         Label(self, text = self.encrypted).place(x=0, y=100)
 
