@@ -15,6 +15,8 @@ class Example(Frame):
     encrypted =""
     key = {}
     to = ""
+    decrypted = ""
+    pad = ""
     
     def initUI(self):
         self.parent.title("One Time Pad Generator")
@@ -39,11 +41,29 @@ class Example(Frame):
         encode.insert(0, "text you want to encrypt")
        
          
-        encodeButt = Button(self, text="Encrypt",
+        encodeButton = Button(self, text="Encrypt",
             command=lambda: self.encrypt(encode.get()))
-        encodeButt.place(x=0, y=100)
+        encodeButton.place(x=0, y=100)
         email = Button(self, text="Send Email",command=lambda:self.sendmail(e.get()))
         email.place(x = 0, y = 80)
+
+        decode = Entry(self)
+        decode.pack()
+
+        decode.delete(0, Tkinter.END)
+        decode.insert(0, "text you want to decrypt")
+
+        pad = Entry(self)
+        pad.pack()
+
+        pad.delete(0, Tkinter.END)
+        pad.insert(0, "pad of text you want to decrypt")
+       
+         
+        decodeButton = Button(self, text="decrypt",
+            command=lambda: self.decrypt(decode.get(), pad.get()))
+        decodeButton.place(x=0, y=130)
+
        
         
     def createKey(self):
@@ -58,6 +78,10 @@ class Example(Frame):
     def encrypt(self, string):
         self.encrypted = Cryptography.Encrypt(string, self.key)
         Label(self, text = self.encrypted).place(x=0, y=100)
+
+    def decrypt(self, string, pad):
+        self.decrypted = Cryptography.Decrypt(string, pad)
+        Label(self, text = self.decrypt).place(x=0, y=150)
 
 def main():
   
