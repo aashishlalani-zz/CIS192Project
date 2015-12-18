@@ -2,7 +2,6 @@ import smtplib
 
 
 username = "onetimepadcis192@gmail.com"
-# toaddrs  = "anvita.achar@gmail.com"
 
 
 def send_email(msg, toaddrs):
@@ -15,12 +14,9 @@ def send_email(msg, toaddrs):
     server.starttls()
     server.ehlo()
     server.login(username, password)
-    message = """From: From Person <{}> 
-    To: To Person <{}> 
-    Subject: SMTP e-mail test This is a test e-mail message.
-    {}""".format(username, toaddrs, msg)
-    print message
+    SUBJECT = "A friend has sent you a new encrypted message"
+    message = 'Subject: %s\n\n%s' % (SUBJECT, msg)
     server.sendmail(username, toaddrs, message)
-    print "yeaahh"
+   
     server.quit()
     

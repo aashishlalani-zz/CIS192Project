@@ -10,7 +10,7 @@ Created on Dec 8, 2015
 @author: aashishlalani
 '''
 def Encrypt(string, pad, start = 0):
-    
+    string = ast.literal_eval(string)
     stringInBin2 = ''
     for x in string:
         temp = ''.join(format(ord(x), 'b'))
@@ -34,7 +34,7 @@ def Encrypt(string, pad, start = 0):
         encrypted = encrypted + chr(int(temp, 2))
         temp = ''
     
-    return [encrypted, nextStartPoint]
+    return [repr(encrypted), nextStartPoint]
 
     
 def GenerateKey(pad_len = 1000):
@@ -62,22 +62,22 @@ def inputPad(filename):
     return json_res
 
 def main():
-
+    ''' example test case here
     pad = GenerateKey();
     
     input = inputPad("padOutput");
     
     print input;
     
-    resAndStartPoint = Encrypt("Hello hello hello", input, 2)
+    resAndStartPoint = Encrypt(repr("Hello hello hello"), input, 0)
     print resAndStartPoint[1]
-    resAndStartPoint2 = Encrypt("SUP SUP SUP", input, resAndStartPoint[1])
-    deRes = Encrypt(resAndStartPoint[0], input, 2)
+    resAndStartPoint2 = Encrypt(repr("SUP SUP SUP"), input, resAndStartPoint[1])
+    deRes = Encrypt(resAndStartPoint[0], input, 0)
     deRes2 = Encrypt(resAndStartPoint2[0], input, deRes[1]);
     print resAndStartPoint[0]
     print resAndStartPoint2[0]
     print deRes[0]
     print deRes2[0]
-
+    '''
 if __name__ == '__main__':
     main()  
