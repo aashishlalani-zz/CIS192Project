@@ -46,7 +46,7 @@ def GenerateKey(pad_len = 1000):
     pass
 
 
-def outputPad(filename, pad):
+def outputPad(pad, filename = "padOutput"):
     with open(filename, 'w') as jsonfile:
         json.dump(pad, jsonfile)
     

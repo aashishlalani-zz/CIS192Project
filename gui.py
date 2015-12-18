@@ -30,13 +30,16 @@ class Example(Frame):
         encrypt_pad = Entry(self)
         encrypt_pad.grid(row=0, column=1)
         encrypt_pad.delete(0, Tkinter.END)
-        encrypt_pad.insert(0, "your pad")
+        encrypt_pad.insert(0, "padOutput")
         
         #start
         start_encrypt = Entry(self)
         start_encrypt.grid(row=0, column=2)
         start_encrypt.delete(0, Tkinter.END)
         start_encrypt.insert(0, 0)
+        
+        
+        
         
         #encrypt button
         encodeButton = Button(self, text="Encrypt",
@@ -46,6 +49,18 @@ class Example(Frame):
         encodeButton = Button(self, text="Decrypt",
             command=lambda: self.decrypt(str(text_to_encrypt.get()), encrypt_pad.get(), start_encrypt.get()))
         encodeButton.grid(row=1, column=2)
+        
+      
+        #generate pad
+        padgen = Entry(self)
+        padgen.grid(row=2, column=0)
+        padgen.delete(0, Tkinter.END)
+        padgen.insert(0, 0)
+        
+        #gen key button
+        genkey = Button(self, text="Generate Key",
+                        command=lambda: Cryptography.outputPad(Cryptography.GenerateKey(int(padgen.get())), encrypt_pad.get()))
+        genkey.grid(row=2, column=1)
         
         #encrypted text
        
@@ -60,12 +75,12 @@ class Example(Frame):
        
         #input email
         e = Entry(self)
-        e.grid(row = 2, column = 0)
+        e.grid(row = 3, column = 0)
         e.delete(0, Tkinter.END)
         e.insert(0, "Send encrypted message via email")
         #send email
         email = Button(self, text="Send Email",command=lambda:self.sendmail(e.get()))
-        email.grid(row=2, column=1)
+        email.grid(row=3, column=1)
 
        
       
